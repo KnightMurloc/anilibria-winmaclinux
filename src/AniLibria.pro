@@ -1,5 +1,5 @@
 QT += quick multimedia network concurrent svg websockets
-CONFIG += c++11
+CONFIG += c++11 debug
 
 windows {
     QT += av
