@@ -161,7 +161,7 @@ else: unix:!android: target.path = $$(QT_INSTALL_PREFIX)/bin
 }
 
 flatpak {
-    metadata.path = $$(QT_INSTALL_PREFIX)/share/metainfo/tv.anilibria.anilibria.metainfo.xml
+    metadata.path = $$(QT_INSTALL_PREFIX)/share/metainfo
     metadata.files += ../tv.anilibria.anilibria.appdata.xml
     unix: INSTALLS += metadata
 }
