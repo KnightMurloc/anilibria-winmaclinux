@@ -14,7 +14,7 @@ unix: {
 unix {
 #Setup desktop entry file. https://specifications.freedesktop.org/desktop-entry-spec/latest
     desktop.files += ../data/anilibria.desktop
-    desktop.path = $$(QT_INSTALL_PREFIX)/usr/share/applications
+    desktop.path = $$(QT_INSTALL_PREFIX)/share/applications
 
 #Setup icons for following resolutions: 16x16; 32x32; 128x128; 256x256 and 512x512.
 #https://specifications.freedesktop.org/icon-theme-spec/icon-theme-spec-latest.html
