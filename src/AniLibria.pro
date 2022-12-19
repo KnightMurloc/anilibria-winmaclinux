@@ -160,6 +160,12 @@ else: unix:!android: target.path = $$(QT_INSTALL_PREFIX)/bin
     else:macx: INSTALLS += target
 }
 
+flatpak {
+    metadata.path = $$(QT_INSTALL_PREFIX)/share/metainfo/tv.anilibria.anilibria.metainfo.xml
+    metadata.files += ../tv.anilibria.anilibria.appdata.xml
+    unix: INSTALLS += metadata
+}
+
 HEADERS += \
     Classes/ListModels/allmyanilibrialistmodel.h \
     Classes/ListModels/cinemahalllistmodel.h \
