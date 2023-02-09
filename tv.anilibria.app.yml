@@ -4,19 +4,36 @@ runtime-version: '5.15-22.08'
 sdk: org.kde.Sdk
 command: AniLibria
 modules:
+  - name: vlc-sdk
+    buildsystem: "simple"
+    build-options:
+      env:
+        MAKEFLAGS: "-j 2"
+    build-commands:
+      - "./configure BUILDCC=/usr/bin/gcc --prefix=/app --disable-vlc --disable-lua --disable-a52"
+      - "make"
+      - "make install"
+      - "cp -r include/* /app/include/vlc"
+    sources:
+      - type: archive
+        url: "https://download.videolan.org/pub/videolan/vlc/last/vlc-3.0.18.tar.xz"
+        sha256: "57094439c365d8aa8b9b41fa3080cc0eef2befe6025bb5cef722accc625aedec"
+
   - name: anilibria
     buildsystem: qmake
     subdir: src
     build-options:
       env:
         PREFIX: /app
+        CPLUS_INCLUDE_PATH: "/app/include:/app/include/vlc"
+        LIBRARY_PATH: "/app/lib"
       config-opts:
         - CONFIG += flatpak
     post-install:
       - desktop-file-edit --set-key=Exec --set-value=/app/bin/AniLibria /app/share/applications/anilibria.desktop
     sources:
       - type: git
-        url: https://github.com/anilibria/anilibria-winmaclinux
+        url: https://github.com/KnightMurloc/anilibria-winmaclinux
 rename-icon: "anilibria"
 rename-desktop-file: "anilibria.desktop"
 finish-args:
